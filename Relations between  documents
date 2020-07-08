@@ -1,0 +1,37 @@
+Creating project as grandparent-tier1
+
+PUT /project
+{
+  "mappings": {
+    "properties": {
+      "join_fields":{
+        "type": "join",
+        "relations":{
+          "projects":"Departments",
+          "Departments":["EmpDetails","EmpSalary"]
+        }
+      },
+      "client":{
+        "type": "nested"
+      }
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////
+Creating department as parent-tier2
+PUT /departments
+{
+  "mappings": {
+    "properties": {
+      "join_fields":{
+        "type": "join",
+        "relations":{
+          "Departments":["EmpDetails","EmpSalary"]
+        }
+      }
+    }
+  }
+}
+
+
