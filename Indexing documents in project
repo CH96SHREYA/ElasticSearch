@@ -20,7 +20,8 @@ PUT /project/_doc/1
     
   }
   
-  ]
+  ],
+  "join_fields":"projects"
   
 }
 
@@ -35,14 +36,16 @@ PUT /project/_doc/2
     "clientCountryName":"India",
     "startYear":2010,
     "endYear":2012
-  }
+  },
+  "join_fields":"projects"
   
 }
 
 PUT /project/_doc/3
 {
   "project_id":"p-3",
-  "duration":45
+  "duration":45,
+  "join_fields":"projects"
   
 }
 
@@ -68,7 +71,8 @@ PUT /project/_doc/4
     
   }
   
-  ]
+  ],
+  "join_fields":"projects"
   
 }
 
@@ -77,7 +81,8 @@ PUT /project/_doc/4
 PUT /project/_doc/5
 {
   "project_id":"p-5",
-  "duration":30
+  "duration":30,
+  "join_fields":"projects"
   
 }
 
@@ -88,3 +93,4 @@ GET /project/_search
     "match_all": {}
   }
 }
+
