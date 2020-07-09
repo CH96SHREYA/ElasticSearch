@@ -1,0 +1,19 @@
+1) Select the detail of the employee whose name start with P.
+
+GET /office_department/_search
+{
+  "_source":["employees.empId","employees.contactNo", "employees.emailId","employees.empName"],
+  "query": {
+    "nested": {
+      "path": "employees",
+      "query": {
+        "wildcard": {
+          "employees.empName": {
+            "value": "p*"
+          }
+        }
+      }
+    }
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
