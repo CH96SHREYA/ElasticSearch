@@ -22,6 +22,52 @@ PUT /office_department/_doc/1
   "join_fields":"departments"
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Its child docs:
+
+PUT /office_department/_doc/25?routing=1
+{
+  "project_id":"p-1",
+  "duration":23,
+  "client":[
+  {
+    "clientId":"cl-1",
+    "clientName":"ABC",
+    "clientCountryCode":"c-1",
+    "clientCountryName":"India",
+    "startYear":2010,
+     "endYear":2010
+  },
+  {
+    "clientId":"cl-3",
+    "clientName":"ABC",
+    "clientCountryCode":"c-2",
+    "clientCountryName":"USA",
+    "startYear":2010
+    
+  }
+  ],
+  "join_fields":{
+    "name":"empProject",
+    "parent":1
+  }
+}
+
+
+
+PUT /office_department/_doc/27?routing=1
+{
+  "project_id" : "p-3",
+   "duration" : 45,
+    "join_fields" :{
+            "name":"empProject",
+            "parent":1
+          }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 PUT /office_department/_doc/2
 {
   "DeptId":"E-102",
@@ -38,7 +84,27 @@ PUT /office_department/_doc/2
   ],
   "join_fields":"departments"
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Its child doc
+PUT /office_department/_doc/26?routing=2
+{
+   "project_id" : "p-2",
+    "duration" : 15,
+    "client" : {
+            "clientId" : "cl-2",
+            "clientName" : "PQR",
+            "clientCountryCode" : "c-1",
+            "clientCountryName" : "India",
+            "startYear" : 2010,
+            "endYear" : 2012
+          },
+          "join_fields" : {
+            "name":"empProject",
+            "parent":2
+        }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 PUT /office_department/_doc/3
 {
@@ -49,6 +115,19 @@ PUT /office_department/_doc/3
   "join_fields":"departments"
  
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Its child doc
+PUT /office_department/_doc/29?routing=3
+{
+  "project_id" : "p-5",
+  "duration" : 30,
+  "join_fields" : 
+  {
+    "name":"empProject",
+    "parent":3
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 PUT /office_department/_doc/4
 {
@@ -66,6 +145,37 @@ PUT /office_department/_doc/4
   ],
   "join_fields":"departments"
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Its child doc
+
+PUT /office_department/_doc/28?routing=4
+{
+     "project_id" : "p-4",
+      "duration" : 2,
+      "client" : [
+            {
+                "clientId" : "cl-1",
+                "clientName" : "ABC",
+                "clientCountryCode" : "c-1",
+                "clientCountryName" : "India",
+                "startYear" : 2014,
+                "endYear" : 2015
+              },
+              {
+                "clientId" : "cl-5",
+                "clientName" : "mnp",
+                "clientCountryCode" : "c-3",
+                "clientCountryName" : "China",
+                "startYear" : 2015
+              }
+            ],
+      "join_fields" : {
+        "name":"empProject",
+        "parent":4
+          }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 PUT /office_department/_doc/5
 {
