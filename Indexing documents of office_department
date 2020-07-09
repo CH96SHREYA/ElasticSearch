@@ -1,0 +1,78 @@
+PUT /office_department/_doc/1
+{
+  "DeptId":"E-101",
+  "DeptName":"HR",
+  "Dept-off":"Monday",
+  "DeptHead":105,
+  "employees":[{
+    "empId":101,
+    "empName":"Isha",
+    "contactNo":"9650081887",
+    "emailId":"isha@gmai.com",       
+    "empHead":105
+  },
+  {
+     "empId":105,
+    "empName":"Abhishek",
+    "contactNo":"9650081887",
+    "emailId":"abhishek@gmai.com",
+    "empHead":102
+  }
+  ],
+  "join_fields":"departments"
+}
+
+PUT /office_department/_doc/2
+{
+  "DeptId":"E-102",
+  "DeptName":"Development",
+  "Dept-off":"Tuesday",
+  "DeptHead":101,
+  "employees":[{
+    "empId":104,
+    "empName":"Rahul",
+    "contactNo":99090090,
+    "emailId":"rahul@yahoo.com",
+    "empHead":105
+  }
+  ],
+  "join_fields":"departments"
+}
+
+
+PUT /office_department/_doc/3
+{
+  "DeptId":"E-103",
+  "DeptName":"House Keeping",
+  "Dept-off":"Saturday",
+  "DeptHead":103,
+  "join_fields":"departments"
+ 
+}
+
+PUT /office_department/_doc/4
+{
+  "DeptId":"E-104",
+  "DeptName":"Sales",
+  "Dept-off":"Sunday",
+  "DeptHead":104,
+  "employees":[{
+    "empId":102,
+    "empName":"Priya",
+    "contactNo":99090090,
+    "emailId":"priya@yahoo.com",
+    "empHead":103
+  }
+  ],
+  "join_fields":"departments"
+}
+
+PUT /office_department/_doc/5
+{
+  "DeptId":"E-105",
+  "DeptName":"Purchase",
+  "Dept-off":"Tuesday",
+  "DeptHead":104,
+  "join_fields":"departments"
+ 
+}
