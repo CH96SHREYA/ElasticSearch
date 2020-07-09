@@ -51,4 +51,15 @@ GET /office_department/_search
   }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+4)  What is the department name for DeptID E-102?
+
+GET /office_department/_search
+{
+  "_source":["DeptName"],
+  "query": {
+    "term": {
+      "DeptId.keyword": "E-102"
+    }
+  }
+}
 
