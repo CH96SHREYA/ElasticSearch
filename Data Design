@@ -1,0 +1,16 @@
+PUT /office_department
+{
+  "mappings": {
+    "properties": {
+      "join_fields":{
+        "type": "join",
+        "relations":{
+          "departments":["empProject","empSalary"]
+        }
+      },
+      "employees":{
+        "type": "nested"
+      }
+    }
+  }
+}
