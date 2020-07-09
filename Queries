@@ -17,3 +17,22 @@ GET /office_department/_search
   }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+2)  Select the detail of employee whose emailId is in gmail.
+ Used fuzziness here
+ 
+ GET /office_department/_search
+{
+  "_source":["employees.empId","employees.contactNo", "employees.emailId","employees.empName"],
+  "query": {
+    "nested": {
+      "path": "employees",
+      "query": {
+        "match": {
+          "employees.emailId": {
+            "query": "@gmail.com",
+            "fuzziness": "auto"
+          }
+      } }
+    }
+  }
+}
