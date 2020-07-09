@@ -36,3 +36,19 @@ GET /office_department/_search
     }
   }
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+3) Select the details of the employee who work either for department E-104 or E-102.
+GET /office_department/_search
+{
+  "_source":["employees.empId","employees.contactNo", "employees.emailId","employees.empName"],
+  "query": {
+    "terms": {
+      "DeptId.keyword": [
+        "E-102",
+        "E-104"
+      ]
+    }
+  }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
