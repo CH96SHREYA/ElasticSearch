@@ -1,0 +1,29 @@
+GET /office_department/_search
+{
+  "query": {
+    "has_parent": {
+      "parent_type": "departments",
+      "query": {
+        "term":{
+          "DeptName.keyword": "HR"
+        }
+        
+      }
+    }
+  }
+}
+
+GET /office_department/_search
+{
+  "query": {
+    "has_child": {
+      "type": "empProject",
+      "query": {
+        "term":{
+          "project_id.keyword": "p-3"
+        }
+        
+      }
+    }
+  }
+}
