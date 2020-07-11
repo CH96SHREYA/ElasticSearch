@@ -83,4 +83,58 @@ GET /office_department/_search
   }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+6)  How many project started in year 2010?
+GET /office_department/_search
+{
+  "_source": "project_id",
+  "query": {
+    "term": {
+      "client.startYear": {
+        "value":2010
+      }
+    }
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+7) How many project started and finished in the same year? (Not working but concept is right)
+  GET /office_department/_search
+  {
+    "query": {
+      "bool": {
+        "must": [
+          {"script": {
+            "script":{
+              "source": "doc['client.startYear'].value==doc['client.endYear'].value"
+            }
+          }}
+        ]
+      }
+    }
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  8) select the name of the employee whose name's 3rd charactor is 'h'.
+  
+  
+GET /office_department/_search
+{
+  "_source":"employees.empName",
+  "query": {
+    "nested": {
+      "path": "employees",
+      "inner_hits": {
+       
+      }, 
+      "query": {
+        "regexp": {
+          "employees.empName.keyword": {
+            "value": "[a-zA-Z]+h*"
+          }
+        }
+      }
+    }
+  }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
