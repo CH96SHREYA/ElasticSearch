@@ -45,4 +45,17 @@ POST /sales/_search
   }}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-4) 
+4) Get the max no. of orders sold 
+POST /sales/_search
+{
+  
+  "_source": "customerName", 
+ 
+  "aggs": {
+    "max_quantity": {
+      "max": {
+        "field": "orderQuantity"
+      }
+    }
+  }
+}
