@@ -154,6 +154,47 @@ GET /office_department/_search
       }
     }
   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+10)  Select the name of the employee who is working under Abhishek.
+ GET /office_department/_search
+  {
+    "_source":"employees.empId",
+    "query": {
+      "nested": {
+        "path": "employees",
+        "inner_hits": {}, 
+        "query": {
+          "term": {
+            "employees.empName.keyword": {
+              "value": "Abhishek"
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
+  
+   GET /office_department/_search
+  {
+    "_source":"employees.empName",
+    "query": {
+      "nested": {
+        "path": "employees",
+        "inner_hits": {}, 
+        "query": {
+          "term": {
+            "employees.empHead": {
+              "value": "105"
+            }
+          }
+        }
+      }
+    }
+  }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
