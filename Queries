@@ -195,6 +195,20 @@ GET /office_department/_search
     }
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  11) select the indian clinets details.
+  GET /office_department/_search
+{
+ "_source": ["client.clientId","client.clientCountryName","client.clientCountryCode","client.startYear","client.endYear"],
+ 
+ "query": {
+   "term": {
+     "client.clientCountryName.keyword": {
+       "value": "India"
+     }
+   }
+ }
+}
 
 
 
