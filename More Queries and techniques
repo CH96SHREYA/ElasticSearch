@@ -1,0 +1,23 @@
+Alias
+PUT /office_department/_mapping
+{
+  "properties":{
+    "time_Of_Completion":{
+      "type":"alias",
+      "path":"duration"
+    }
+  }
+}
+GET /office_department/_search
+{
+  "_source": ["project_id","duration"],
+  "query": {
+    "range": {
+      "time_Of_Completion": {
+        "gte": 20
+        
+      }
+    }
+  }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
