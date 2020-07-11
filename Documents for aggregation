@@ -1,0 +1,101 @@
+Data
+
+ OrderID	OrderDate	OrderPrice	OrderQuantity	CustomerName
+      1	12/22/2005	160	2	Smith
+      2	08/10/2005	190	2	Johnson
+      3	07/13/2005	500	5	Baldwin
+      4	07/15/2005	420	2	Smith
+      5	12/22/2005	1000	4	Wood
+      6	10/2/2005	820	4	Smith
+      7	11/03/2005	2000	2	Baldwin
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Mapping
+   PUT sales
+  {
+    "mappings": { 
+    "properties":
+    {
+      
+      "orderDate":{
+        "type":"date",
+        "format":"MM/dd/YYYY"
+      },
+      
+      "customerName":{
+      "type":"keyword"}
+    }}
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+PUT /sales/_doc/1
+{
+  "orderID":1,
+  "orderDate":"12/22/2005",
+  "orderPrice":160,
+  "orderQuantity":2,
+  "customerName":"Smith"
+  
+}
+PUT /sales/_doc/2
+{
+  "orderID":2,
+  "orderDate":"08/10/2005",
+  "orderPrice":190,
+  "orderQuantity":2,
+  "customerName":"Johnson"
+  
+}
+
+PUT /sales/_doc/3
+{
+  "orderID":3,
+  "orderDate":"07/13/2005",
+  "orderPrice":500,
+  "orderQuantity":5,
+  "customerName":"Baldwin"
+  
+}
+PUT /sales/_doc/4
+{
+  "orderID":4,
+  "orderDate":"07/15/2005",
+  "orderPrice":420,
+  "orderQuantity":2,
+  "customerName":"Smith"
+  
+}
+
+
+PUT /sales/_doc/5
+{
+  "orderID":5,
+  "orderDate":"12/22/2005",
+  "orderPrice":1000,
+  "orderQuantity":4,
+  "customerName":"Wood"
+  
+}
+
+
+
+PUT /sales/_doc/6
+{
+  "orderID":6,
+  "orderDate":"10/02/2005",
+  "orderPrice":820,
+  "orderQuantity":4,
+  "customerName":"Smith"
+  
+}
+
+ 
+PUT /sales/_doc/7
+{
+  "orderID":7,
+  "orderDate":"11/03/2005",
+  "orderPrice":2000,
+  "orderQuantity":2,
+  "customerName":"Baldwin"
+  
+}
+
