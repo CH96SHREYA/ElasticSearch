@@ -1,4 +1,5 @@
-Alias
+1) Create an Alias for field duration to time_Of_Completion
+
 PUT /office_department/_mapping
 {
   "properties":{
@@ -21,3 +22,18 @@ GET /office_department/_search
   }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+2) Search for documents where depHead and empId are same
+  POST /office_department/_search
+  {
+    "_source": "employees.empName", 
+    
+    "query": {
+      
+      "multi_match": {
+        "query": 105,
+        "fields": ["DeptHead","employees.empId"]
+      }
+      
+    }
+  }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
