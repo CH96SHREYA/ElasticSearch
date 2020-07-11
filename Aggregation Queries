@@ -1,0 +1,47 @@
+1) FInd the number of purchase done by customer Smith
+ GET /sales/_count
+  {
+    "query": {
+      "term": {
+        "customerName": {
+          "value": "Smith"
+        }
+      }
+    }
+  }
+  
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  2) Get the number of customers
+  GET /order/_search
+{
+  "size": 0,
+  "aggs": {
+    "total_salesmen": {
+      "cardinality": {
+        "field": "salesman.id"
+      }
+    }
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+3) Find the total purchase done by Smith
+
+POST /sales/_search
+{
+ 
+   "size": 0,
+  "aggs": {
+    "purchase": {
+      "filter": {"term": {
+        "customerName": "Smith"
+      }}, 
+     "aggs": {
+       "tatal_purchase": {
+         "sum": {
+           "field": "orderPrice"
+         }
+       }
+     }
+  }}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
