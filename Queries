@@ -135,6 +135,25 @@ GET /office_department/_search
   }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+9)  Select the department name of the company which is assigned to the employee whose employee id is grater 103.
+
+GET /office_department/_search
+  {
+    "_source": "DeptName", 
+    "query": {
+      "nested": {
+        "path": "employees",
+        "query": {
+          "range": {
+            "employees.empId": {
+              "gte": 103
+              
+            }
+          }
+        }
+      }
+    }
+  }
 
 
 
