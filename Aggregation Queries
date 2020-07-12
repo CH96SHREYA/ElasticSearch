@@ -60,6 +60,7 @@ POST /sales/_search
   }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 5) Get the number of transcations with price  between 500 and 1000
 GET /sales/_search
 {
@@ -123,6 +124,49 @@ GET sales/_search
         }
       }
     }
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+8) Print the stats of the purchase amt and no. of ttransactions half yearly
+
+GET /sales/_search
+{
+  "size": 0,
+  "aggs": {
+    "purchased_range": {
+      "date_range": {
+        "field": "orderDate",
+        "format": "MM/dd/yyyy", 
+        "keyed": true, 
+        "ranges": [
+          {
+            "from": "01/01/2005",
+            "to":  "01/01/2005||+6M",
+            "key": "first_half"
+          },
+          {
+            "from": "01/01/2005||+6M",
+            "to": "01/01/2005||+1y",
+            "key":"second_half"
+          }
+          
+        ]
+      },
+      "aggs": {
+        "stats_time": {
+          "stats": {
+            "field": "orderPrice"
+          }
+        },
+        "count_of_transac":{
+          "sum": {
+            "field": "orderQuantity"
+          }
+        }
+       
+      }
+    }
+    
   }
 }
 
