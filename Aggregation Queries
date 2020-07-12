@@ -101,7 +101,30 @@ GET sales/_search
   }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-7) 
+7) Print the stats of every customer with respect to order price and no. of purchase
+GET sales/_search
+{
+  "size": 0,
+  "aggs": {
+    "customer_Name": {
+      "terms": {
+        "field": "customerName"
+      },
+      "aggs": {
+        "stats_customer": {
+          "stats": {
+            "field": "orderPrice"
+          }
+        },
+        "stats_order":{
+          "stats": {
+            "field": "orderQuantity"
+          }
+        }
+      }
+    }
+  }
+}
 
 
 
